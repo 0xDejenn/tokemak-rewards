@@ -1,0 +1,48 @@
+/* ========================================= 
+Base Layout Styles
+============================================*/
+/* ---- Navigation ---- */
+
+/* ---- Layout Containers --- */
+.container {
+  max-width: 100%;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+/* ---- Page Elements ---- */
+.header h1 {
+  text-align: center;
+}
+
+/* ========================================= 
+Media Queries
+============================================*/
+
+@media (min-width: 760px) {
+  /* ---- Layout Containers --- */
+  .container {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ---- Page Elements ---- */
+  .header h1 {
+    text-align: left;
+  }
+}
+
+@media (min-width: 900px) {
+  /* ---- Layout Containers --- */
+  .container {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1000px) {
+  /* ---- Layout Containers --- */
+  .container {
+    width: 70%;
+  }
+}

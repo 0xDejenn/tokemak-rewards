@@ -1,0 +1,62 @@
+/* global styles are CSS to be loaded by every page. */
+
+/* ========================================= 
+Base Element Styles
+============================================*/
+/* ---- Page Elements ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+/* ---- Table related --- */
+table {
+  border-collapse: collapse;
+  margin: 10px auto;
+}
+
+thead th, tfoot tr {
+  font-weight: 400;
+  background: var(--dark-grey);
+  color: var(--white);
+}
+
+tr {
+  background: var(--light-grey);
+  border-bottom: 1px solid var(--white);
+  margin-bottom: 5px;
+  border-radius: 0.2em;
+}
+
+tbody tr:nth-child(even) {
+  background: var(--medium-grey);
+}
+
+th, td {
+  text-align: left;
+  padding: 6px;
+  overflow-wrap: anywhere;
+}
+
+/* ========================================= 
+Media Queries
+============================================*/
+@media screen and (max-width: 40em) {
+   /* ---- Table related --- */
+
+   /* Need to review this, is a little weird. */
+    #responsiveRow {
+      border: none;
+    }
+
+    #responsiveRowHeader {
+      text-align: center;
+    }
+}

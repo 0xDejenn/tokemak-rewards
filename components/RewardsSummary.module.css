@@ -1,0 +1,30 @@
+/* ========================================= 
+Base Layout Styles
+============================================*/
+/* ---- Layout Containers --- */
+.container {
+  margin-top: 2.5em;
+}
+/* ---- Page Elements ---- */
+.title {
+  text-align: center;
+}
+
+.table_source {
+  background: none;
+}
+
+.table_source td  {
+  padding: 10px 2px;
+  font-size: 0.8em;
+  color: var(--dark-grey);
+  font-style: italic;
+}
+/* ========================================= 
+Media Queries
+============================================*/
+@media (min-width: 41em) {
+  .title {
+    text-align: left;
+  }
+}

@@ -1,0 +1,56 @@
+/* ========================================= 
+Base Layout Styles
+============================================*/
+/* ---- Layout Containers --- */
+.UserQuery {
+  display: flex;
+  flex-direction: column;
+}
+/* ---- Page Elements ---- */
+.UserQuery button{
+  font-size: 1em;
+  color: var(--white);
+  background-color: var(--dark-grey);
+  padding: .8em;
+  margin-top: .5em;
+  border-radius: .2em;
+  border: none;
+}
+
+.UserQuery input {
+  padding: 0.8em;
+  font-size: 1em;
+  text-align: center;
+  border-radius: .2em;
+  border: 1px solid var(--dark-grey)
+  
+}
+/* ========================================= 
+Media Queries
+============================================*/
+@media only screen and (min-width: 760px) {
+  /* ---- Layout Containers --- */
+  .UserQuery {
+    flex-direction: row;
+  }
+  
+  /* ---- Page Elements ---- */
+  .UserQuery input {
+    width: 70%;
+    text-align: start;
+    padding: 0.5em;
+  }
+
+  .UserQuery button {
+    margin-left: 0.5em;
+    margin-top: 0;
+    padding: 0.5em;
+  }
+}
+
+@media only screen and (min-width: 820px) {
+  .UserQuery input {
+    flex-grow: 0;
+    width: 65%;
+  }
+}
