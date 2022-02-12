@@ -4,7 +4,7 @@ import { IPFS_BASE } from "../constants/constants";
 import { CycleHash, RewardPayload } from "./types";
 
 const TWO_MINUTES = 2 * 60 * 1000;
-const retryWaits = [0, 500, 1000, 1000, 2000];
+const retryWaits = [0, 1000, 2000];
 
 export async function fetchRewardPayload(
   cycleHash: CycleHash,
@@ -18,12 +18,10 @@ export async function fetchRewardPayload(
     await waitPromise(wait);
 
     try {
-      const tryUrl = wait === 0 ? url : `${url}?${wait}`
+      const tryUrl = wait === 0 ? url : `${url}?${wait}`;
       const resp = await axios.get(tryUrl, { timeout: TWO_MINUTES });
       return resp.data;
-    } catch (e: any) {
-      continue;
-    }
+    } catch (e: any) {}
   }
 
   throw new Error("failed to retrieve reward payload");

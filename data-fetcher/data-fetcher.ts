@@ -59,6 +59,9 @@ export async function getRewardHistory(
   let successes: number[] = [];
   let failures: number[] = [];
 
+  const maxCycleInfo = await fetchRewardPayload(cycleHashes[0], address);
+  let targetRewardAmount = BigNumber.from(maxCycleInfo.payload.amount);
+
   const makeReq = async (
     cycleIndex: number,
     requestIndex: number
@@ -70,6 +73,7 @@ export async function getRewardHistory(
       );
       successCallback(payload);
       successes.push(cycleIndex);
+      targetRewardAmount = targetRewardAmount.sub(payload.summary.cycleTotal);
     } catch (e: any) {
       console.log(
         `error retrieving reward payload for cycle = ${cycleHashes[cycleIndex].cycleIndex}`
@@ -87,6 +91,10 @@ export async function getRewardHistory(
   for (let i = chunkSize; i < cycleHashes.length; i++) {
     const requestIndex = await Promise.race(reqs);
     reqs[requestIndex] = makeReq(i, requestIndex);
+
+    if (targetRewardAmount.eq(0)) {
+      break;
+    }
   }
 
   await Promise.all(reqs);
@@ -111,7 +119,7 @@ export async function getRewardHistory(
   }
 
   const firstFailure = failures[0];
-  const lastSuccess = successes[successes.length-1];
+  const lastSuccess = successes[successes.length - 1];
 
   if (firstFailure !== undefined && lastSuccess !== undefined) {
     if (firstFailure - lastSuccess !== 1) {
