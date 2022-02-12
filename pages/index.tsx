@@ -94,7 +94,7 @@ export default function Index(props: RewardsProps) {
 
     userRewardPayloads.forEach((payload) => {
       payload.summary.breakdown.forEach((detail) => {
-        // determines if liquity director ("ld") or liquidity provider("lp")
+        // determines if liquidity director ("ld") or liquidity provider("lp")
         const [token, ld] = getTokenAndisLdFromDescription(detail.description);
 
         if (!detailResults[token]) {
@@ -136,7 +136,7 @@ export default function Index(props: RewardsProps) {
 
     userRewardPayloads.forEach((payload) => {
       payload.summary.breakdown.forEach((detail) => {
-        // determines if liquity director ("ld") or liquidity provider("lp")
+        // determines if liquidity director ("ld") or liquidity provider("lp")
         const [token, ld] = getTokenAndisLdFromDescription(detail.description);
         const cycleTokenKey = `${payload.payload.cycle}-${token}`;
 
@@ -198,7 +198,7 @@ export default function Index(props: RewardsProps) {
         handleSubmit={query}
         preventQuery={isLoading}
       />
-      {isError ? <div>Someting went wrong</div> : <></>}
+      {isError ? <div>Something went wrong</div> : <></>}
       {getRenderComponent()}
     </Layout>
   );
