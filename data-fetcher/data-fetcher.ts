@@ -67,10 +67,22 @@ export async function getRewardHistory(
     requestIndex: number
   ): Promise<number> => {
     try {
-      const payload = await fetchRewardPayload(
-        cycleHashes[cycleIndex],
-        address
-      );
+      const reqCycleIndex = cycleHashes[cycleIndex];
+      const payload = await fetchRewardPayload(reqCycleIndex, address);
+
+      if (reqCycleIndex.cycleIndex === 0) {
+        payload.payload.cycle = 0;
+        payload.summary = {
+          cycleTotal: payload.payload.amount,
+          breakdown: [
+            {
+              description: "DeGenesis",
+              amount: payload.payload.amount,
+            },
+          ],
+        };
+      }
+
       successCallback(payload);
       successes.push(cycleIndex);
       targetRewardAmount = targetRewardAmount.sub(payload.summary.cycleTotal);
